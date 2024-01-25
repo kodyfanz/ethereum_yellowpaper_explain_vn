@@ -32,11 +32,11 @@
 ### Trạng thái thế giới (World state)
 |Ký hiệu            |Mô tả
 |------             |------
-|$\sigma[a]$        |Trạng thái của tài khoản $a$, là một bộ (tuple) gồm (none, balance, storageRoot, codeHash)
-|$\sigma[a]_n$      |Nonce của tài khoản $a$
-|$\sigma[a]_b$      |Số dư của tài khoản $a$
-|$\sigma[a]_s$      |Một hash 256-bit của nút gốc (root node) của cây Merkle Patricia mã hóa nội dung của các dữ liệu tài khoản $a$.
-|$\sigma[a]_c$      |Một hash 256-bit của EVM-code của tài khoản $a$, bằng $\texttt{KEC}(\boldsymbol{b})$ trong đó $\boldsymbol{b}$ là code của tài khoản $a$
+|$\mathbf{\sigma}[a]$        |Trạng thái của tài khoản $a$, là một bộ (tuple) gồm (none, balance, storageRoot, codeHash)
+|$\mathbf{\sigma}[a]_n$      |Nonce của tài khoản $a$
+|$\mathbf{\sigma}[a]_b$      |Số dư của tài khoản $a$
+|$\mathbf{\sigma}[a]_s$      |Một hash 256-bit của nút gốc (root node) của cây Merkle Patricia mã hóa nội dung của các dữ liệu tài khoản $a$.
+|$\mathbf{\sigma}[a]_c$      |Một hash 256-bit của EVM-code của tài khoản $a$, bằng $\texttt{KEC}(\boldsymbol{b})$ trong đó $\boldsymbol{b}$ là code của tài khoản $a$
 
 Chú ý rằng 
 ```math
@@ -47,3 +47,23 @@ Trong đó $L^*_I$ là phép biến đổi theo phần tử
 L_I\big((k,v)\big)\equiv\big((\texttt{KEC}(k),\texttt{RLP}(v))\big)
 ```
 Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết đậm hàm ý rằng phép biến đổi thao tác trên bộ (tuple) dữ liệu trạng thái thật trong storage của tài khoản $a$ chứ không phải là hash của nó. Như vậy $L^*_I$ thao tác lượt qua tất cả giá trị được lưu trong storage của tài khoản $a$ và trả về là một bộ (tuple) làm tham số cho hàm $\texttt{TRIE}$, hàm $\texttt{TRIE}$ sẽ thao tác trên bộ (tuple) này và trả về hash 256-bit chính là storageRoot của tài khoản $a$
+
+### Trạng thái máy (Machine state)
+|Ký hiệu            |Mô tả
+|------             |------
+|$\mu_g$            |Lượng gas hiện có
+|$\mu_{pc}$         |Bộ đếm chương trình (program counter)
+|$\mu_m$            |Nội dung bộ nhớ (memory) 
+|$\mu_i$            |Số lượng từ (words) trong bộ nhớ
+|$\mu_s$            |Ngăn xếp (stack)
+|$\mu_s[n]$         |Mục thứ $n$ trong ngăn xếp (mục ở độ sâu $n$)
+
+### Trạng thái con (Substate)
+|Ký hiệu            |Mô tả
+|------             |------
+|$A$                |Một trạng thái con trong quá trình thực thi: $A=(A_\mathbf{s}, A_\mathbf{l}, A_\mathbf{t}, A_r) \equiv (\mathbf{s}, \mathbf{l}, \mathbf{t}, r)$
+|$A_\mathbf{s}$     |Tập hợp tự hủy (self-destruct). Danh sách account sẽ bị loại bỏ cùng với sự hoàn tất của giao dịch
+|$A_\mathbf{l}$     |Một loạt các nhật ký (log series)
+|$A_\mathbf{t}$     |Tập hợp các account đã chạm vào. Account mà đã bị xóa ở cuối giao dịch 
+|$A_r$              |Số dư gas để hoàn lại
+|$A^0$              |Trạng thái con rỗng: $A^0 \equiv \big(\varnothing, (), \varnothing, 0\big)$
