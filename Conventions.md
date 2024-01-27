@@ -197,8 +197,10 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | --------------- | ----------------------------------------- |
 | $\mathbb{B}$    | Tập hợp tất cả các dãy byte. |
 | $\mathbb{B}_n$  | Tập hợp tất cả các dãy byte có độ dài $n$ byte: $\mathbb{B}_n = \{ B: B \in \mathbb{B} \wedge \lVert B \rVert = n \}$ |
-| $\mathbb{P}$    | Tập hợp các số nguyên dương [tại sao không dùng $\mathbb{N}$??? Grrr...]. |
-| $\mathbb{P}_n$  | Tập hợp tất cả các số nguyên dương nhỏ hơn $2^n$: $\mathbb{P}_n = \{ P: P \in \mathbb{P} \wedge P < 2^n \}$ |
+| $\mathbb{T}$    | Tập hợp các mảng byte và dãy cấu trúc |
+| $\mathbb{L}$    | Tập hợp tất cả các cây (tree) - nghĩa là cấu trúc chứ không phải là một lá đơn |
+| $\mathbb{Y}$    | Tập hợp các nibbles (4-bit) |
+| $\mathbb{O}$    | Tập hợp các bytes (8-bit) |
 | $M_{3:2048}$    | Bộ lọc Bloom chuyên biệt. |
 | $\Lambda(...)$  | Hàm tạo hợp đồng. |
 | $\Theta(...)$   | Hàm "gọi tin nhắn"/thực thi hợp đồng. |
