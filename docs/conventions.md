@@ -1,5 +1,12 @@
-# Bảng ký hiệu
-## Quy ước chung
+---
+layout: page
+title:  "Bảng ký hiệu"
+date:   2024-01-27 17:13:16 +0700
+categories: jekyll update
+---
+
+# Quy ước chung
+
 |Thành phần                 |Quy ước                        |Ví dụ                                        |
 |---------------------------|-------------------------------|---------------------------------------------|
 |Cấu trúc bậc cao           |Chữ Hy Lạp viết thường đậm     |$\mathbf{\sigma}$: trạng thái thế giới;<br>$\mathbf{\mu}$: trạng thái máy  |
@@ -16,8 +23,8 @@
 |Giá trị trung gian | Dấu sao ở trên  |$g^*$: gas hoàn lại;<br>$g^{**}$: gas còn lại sau khi thực thi code |
 |Phép biến đổi theo phần tử |Dấu phẩy ở trên hàm  |$f^*\big((x_0, x_1, ...) \big) \equiv \big(f(x_0), f(x_1), ... \big)$: cho mọi hàm $f$ |
 
-## Ký hiệu cụ thể
-### Ký hiêụ trên các cấu trúc bậc cao
+# Ký hiêụ trên các cấu trúc bậc cao
+
 | Ký hiệu         | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$\mathbf{\sigma}$    |Trạng thái thế giới (world-state), bao gồm tất cả trạng thái của tất cả tài khoản gồm luôn thành phần con của nó như: nonce, balances, storage, và code |
@@ -29,7 +36,8 @@
 |$\Upsilon$         |Hàm chuyển đổi trạng thái Ethereum: $\sigma_{t+1} \equiv \Upsilon(\mathbf{\sigma_{t}}, T)$ - nghĩa là trạng thái ở thời điểm $t+1$ là kết quả của phép biến đổi $\Upsilon$ trên số liệu đầu vào là trạng thái ở thời điểm $t$ trước đó $\sigma_{t}$ và tác nhân giao dịch $T$ gây ra |
 |$\Pi$              |Hàm chuyển đổi trạng thái cấp khối: $\Pi(\mathbf{\sigma}, B) \equiv \Upsilon\big(\Upsilon(\mathbf{\sigma}, T_0), T_1)...\big)$ - ở đây ta thấy $\Upsilon\big(\Upsilon(\mathbf{\sigma}, T_0), T_1)...\big)$ là một hàm đệ quy, thực hiện lượt qua tất cả các giao dịch $T_i$ có trong khối $B$, cuối cùng trả về trạng thái thế giớ ở khối $B$ sau khi hoàn thiện |
 
-### Trạng thái thế giới (World state)
+# Trạng thái thế giới (World state)
+
 | Ký hiệu                    | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$\mathbf{\sigma}[a]$        |Trạng thái của tài khoản $a$, là một bộ (tuple) gồm (none, balance, storageRoot, codeHash): $\mathbf{\sigma}[a] \equiv (\mathbf{\sigma}[a]_n, \mathbf{\sigma}[a]_b, \mathbf{\sigma}[a]_s, \mathbf{\sigma}[a]_c)$ |
@@ -39,16 +47,17 @@
 |$\mathbf{\sigma}[a]_c$      |Một hash 256-bit của EVM-code của tài khoản $a$, bằng $\texttt{KEC}(\boldsymbol{b})$ trong đó $\boldsymbol{b}$ là code của tài khoản $a$ |
 
 Chú ý rằng 
-```math
-\texttt{TRIE}\big(L^*_I( \sigma [a]_\boldsymbol{s} )\big) \equiv \sigma[a]_s 
-```
+
+$$\texttt{TRIE}\big(L^*_I(\sigma[a]_\mathbf{s})\big) \equiv \sigma[a]_s$$
+
 Trong đó $L^*_I$ là phép biến đổi theo phần tử 
-```math
-L_I\big((k,v)\big)\equiv\big((\texttt{KEC}(k),\texttt{RLP}(v))\big)
-```
+
+$$L_I\big((k,v)\big)\equiv\big((\texttt{KEC}(k),\texttt{RLP}(v))\big)$$
+
 Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết đậm hàm ý rằng phép biến đổi thao tác trên bộ (tuple) dữ liệu trạng thái thật trong storage của tài khoản $a$ chứ không phải là hash của nó. Như vậy $L^*_I$ thao tác lượt qua tất cả giá trị được lưu trong storage của tài khoản $a$ và trả về là một bộ (tuple) làm tham số cho hàm $\texttt{TRIE}$, hàm $\texttt{TRIE}$ sẽ thao tác trên bộ (tuple) này và trả về hash 256-bit chính là storageRoot của tài khoản $a$
 
-### Trạng thái máy (Machine state)
+# Trạng thái máy (Machine state)
+
 | Ký hiệu                    | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$\mathbf{\mu}_g$            |Lượng gas hiện có |
@@ -58,7 +67,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$\mathbf{\mu}_\mathbf{s}$   |Ngăn xếp (stack) |
 |$\mathbf{\mu}_\mathbf{s}[n]$         |Mục thứ $n$ trong ngăn xếp (mục ở độ sâu $n$) |
 
-### Trạng thái con (Substate)
+# Trạng thái con (Substate)
+
 | Ký hiệu                 | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$A$                      |Một trạng thái con trong quá trình thực thi, là một bộ (tuple): $A \equiv (A_\mathbf{s}, A_\mathbf{l}, A_\mathbf{t}, A_r, A_\mathbf{a}, A_\mathbf{K})$ |
@@ -70,7 +80,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$A_\mathbf{K}$           |Tập hợp các storage key đã truy cập, mỗi phần tử của $A_\mathbf{K}$ là một bộ (tuple) của 20-byte địa chỉ tài khoản và 32-byte khe lưu trữ (storage slot)
 |$A^0$                    |Trạng thái con rỗng: $A^0 \equiv \big(\varnothing, (), \varnothing, 0, \pi, \varnothing\big)$, trong đó $\pi$ là tập hợp của tất cả các địa chỉ hợp đồng được biên dịch trước |
 
-### Môi trường thực thi (Execution enviroment)
+# Môi trường thực thi (Execution enviroment)
+
 | Ký hiệu                 | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$I$                |Bộ (tuple) các phần tử sau đây được cung cấp cho môi trường thực thi |
@@ -85,7 +96,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$I_e$              |Độ sâu của message-call hoặc tạo hợp đồng (tức là số lượng CALL hoặc CREATE2 đang được thực thi ở thời điểm hiện tại). Việc xác định độ sâu này nhằm mục đích ngăn chặn gọi đệ quy vô hạn và kiểm soát tiêu tốn gas |
 |$I_w$              |Cờ cho quyền sửa đổi trạng thái. Xem EIP-214, STATICCALL |
 
-### Thực thi (Execution)
+# Thực thi (Execution)
+
 | Ký hiệu           | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$\Xi$              |Hàm thực thi code $(\boldsymbol{\sigma}', g', A', \mathbf{o}) \equiv \Xi(\boldsymbol{\sigma}, g, A, I)$ |
@@ -95,7 +107,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$Z(\mathbf{\sigma}, \mathbf{\mu}, A, I)$ |Hàm tạm dừng đặc biệt |
 |$w$                |Hoạt động hiện tại sẽ được thực thi |
 
-### Khối (Block)
+# Khối (Block)
+
 | Ký hiệu               | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$B$                |Một khối: $B \equiv (B_H, B_\mathbf{T}, B_\mathbf{U})$ |
@@ -107,7 +120,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$P(H)$             |Khối cha của khối có header $H$ |
 |$V(H)$             |Hàm xác thực header của khối |
 
-### Header khối (Block header)
+# Header khối (Block header)
+
 | Ký hiệu               | Mô tả                               |
 | :---------------------: | ---------------------------------------- |
 | $H_p$           | **parentHash**: Hash Keccak 256-bit của header block cha, toàn bộ nội dung. |
@@ -126,7 +140,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $H_m$           | **prevRandao**: Trước đây là **mixHash** một hash 256-bit bằng chứng, kèm theo **nonce**, rằng một lượng tính toán đủ đã được thực hiện trên block này. Sau khi chuyển cơ chế đồng thuận sang bằng chứng cổ phần, nó là giá trị **RANDAO** mới nhất của trạng thái beacon của khối trước (có thể hiểu là trạng thái hiện tại của hệ thống tại thời điểm cuối cùng của khối trước đó). **RANDAO** là một cơ chế trong Ethereum để tạo số ngẫu nhiên dựa trên dữ liệu từ các người tham gia khác nhau trong hệ thống. Mặt dù vậy, do đặt thù về tính xác định của blockchain, giá trị ngẫu nhiên này vẫn có khả năng bị khống chế hoặc biết trước. |
 | $H_n$           | **nonce**: Một hash 64-bit kèm theo **mixHash**, rằng một lượng tính toán đủ đã được thực hiện trên block này. Sau khi chuyển cơ chế đồng thuận sang bằng chứng cổ phần, giá trị này không còn được dùng nữa và được đặt là 0x0000000000000000 |
 
-### Giao dịch (Transaction)
+# Giao dịch (Transaction)
+
 | Ký hiệu               | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 | $T_x$           | **type**: Loại giao dịch, xem [EIP-2718](https://eips.ethereum.org/EIPS/eip-2718), nhận 1 trong các giá trị [0, 1, 2] |
@@ -146,7 +161,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $T_\mathbf{d}$  | **data**: Dữ liệu đầu vào của cuộc gọi tin nhắn. |
 | $S(T)$          | Hàm người gửi - khôi phục địa chỉ người gửi từ giao dịch: $S(T) \equiv \mathcal{B}_{96..255}\big(\mathtt{KEC}\big( \mathtt{ECDSARECOVER}(h(T), T_w, T_r, T_s) \big) \big).$ |
 
-### Biên lai giao dịch (Transation Receipt)
+# Biên lai giao dịch (Transation Receipt)
+
 | Ký hiệu               | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 |$R$              | Biên lai giao dịch (transaction receipt): $R \equiv (R_x, R_z, R_u, R_b, R_l)$ |
@@ -164,7 +180,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $\Upsilon^z$    | Mã trạng thái của giao dịch này, $z$. |
 |$L_R$            | Hàm chuẩn bị dữ liệu cho biên nhận giao dịch R: $L_R(R) \equiv (R_z, R_u, R_b, R_l)$, dữ liệu này dành cho việc mã hóa thành mảng byte theo cấu trúc $\texttt{RLP}$ |
 
-### Những hàm khác
+# Những hàm khác
+
 | Ký hiệu               | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 | $\ell(\mathbf{x})$ | Phần tử cuối cùng trong dãy $\mathbf{x}$: $\ell(\mathbf{x}) \equiv \mathbf{x}[\lVert \mathbf{x} \rVert - 1]$ |
@@ -183,7 +200,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $\mathtt{RLP}(...)$ | Hàm mã hóa tiền tố đệ quy |
 | $\mathtt{PoW}(...)$ | Hàm bằng chứng làm việc |
 
-### Toán hạng và Biểu tượng
+# Toán hạng và Biểu tượng
+
 | Ký hiệu              | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 | $\lVert ... \rVert$ | Độ dài hoặc số lượng phần tử của một mảng/ tập hợp/ bộ/ dãy/ chuỗi. |
@@ -192,7 +210,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $\varnothing$   | Tập hợp rỗng. |
 | $\cdot$         | Toán tử nối, $(a, b, c, d) \cdot e \equiv (a, b, c, d, e)$, hoặc nhân vô hướng tùy thuộc vào ngữ cảnh. |
 
-### Các ký hiệu khác
+# Các ký hiệu khác
+
 | Ký hiệu               | Mô tả                                     |
 | :---------------------: | ----------------------------------------- |
 | $\mathbb{B}$    | Tập hợp tất cả các dãy byte. |

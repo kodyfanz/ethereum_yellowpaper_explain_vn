@@ -1,4 +1,4 @@
-# ethereum_yellowpaper_explain_vn
+# Tìm hiểu Ethereum Yellow Paper phiên bản Paris
 Làm rõ những điểm khó hiểu trong Giấy vàng Ethereum
 
 ## Lý do
@@ -19,7 +19,7 @@ Một số loại đối tượng tên gọi khác nhau nhưng có cách hiểu 
 |series     | loạt       | Loạt dữ liệu, không quan trọng các vấn đề loại, thứ tự, khả năng thay đổi, truy xuất |
 
 ## Nội dung (cập nhật liên tục)
-[Bảng ký hiệu](./Conventions.md)
+[Bảng ký hiệu](docs/conventions)
 
 ## Giấy phép
 Được cấp phép theo [Giấy phép MIT](./LICENSE)
