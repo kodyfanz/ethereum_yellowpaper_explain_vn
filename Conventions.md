@@ -30,8 +30,8 @@
 |$\Pi$              |Hàm chuyển đổi trạng thái cấp khối: $\Pi(\mathbf{\sigma}, B) \equiv \Upsilon\big(\Upsilon(\mathbf{\sigma}, T_0), T_1)...\big)$ - ở đây ta thấy $\Upsilon\big(\Upsilon(\mathbf{\sigma}, T_0), T_1)...\big)$ là một hàm đệ quy, thực hiện lượt qua tất cả các giao dịch $T_i$ có trong khối $B$, cuối cùng trả về trạng thái thế giớ ở khối $B$ sau khi hoàn thiện |
 
 ### Trạng thái thế giới (World state)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu                    | Mô tả                                     |
+| -------------------------- | ----------------------------------------- |
 |$\mathbf{\sigma}[a]$        |Trạng thái của tài khoản $a$, là một bộ (tuple) gồm (none, balance, storageRoot, codeHash): $\mathbf{\sigma}[a] \equiv (\mathbf{\sigma}[a]_n, \mathbf{\sigma}[a]_b, \mathbf{\sigma}[a]_s, \mathbf{\sigma}[a]_c)$ |
 |$\mathbf{\sigma}[a]_n$      |Nonce của tài khoản $a$ |
 |$\mathbf{\sigma}[a]_b$      |Số dư của tài khoản $a$ |
@@ -49,8 +49,8 @@ L_I\big((k,v)\big)\equiv\big((\texttt{KEC}(k),\texttt{RLP}(v))\big)
 Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết đậm hàm ý rằng phép biến đổi thao tác trên bộ (tuple) dữ liệu trạng thái thật trong storage của tài khoản $a$ chứ không phải là hash của nó. Như vậy $L^*_I$ thao tác lượt qua tất cả giá trị được lưu trong storage của tài khoản $a$ và trả về là một bộ (tuple) làm tham số cho hàm $\texttt{TRIE}$, hàm $\texttt{TRIE}$ sẽ thao tác trên bộ (tuple) này và trả về hash 256-bit chính là storageRoot của tài khoản $a$
 
 ### Trạng thái máy (Machine state)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu                    | Mô tả                                     |
+| -------------------------- | ----------------------------------------- |
 |$\mathbf{\mu}_g$            |Lượng gas hiện có |
 |$\mathbf{\mu}_{pc}$         |Bộ đếm chương trình (program counter) |
 |$\mathbf{\mu}_\mathbf{m}$   |Nội dung bộ nhớ (memory) |
@@ -59,8 +59,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$\mathbf{\mu}_\mathbf{s}[n]$         |Mục thứ $n$ trong ngăn xếp (mục ở độ sâu $n$) |
 
 ### Trạng thái con (Substate)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu           | Mô tả                                     |
+| ----------------- | ----------------------------------------- |
 |$A$                |Một trạng thái con trong quá trình thực thi, là một bộ (tuple): $A \equiv (A_\mathbf{s}, A_\mathbf{l}, A_\mathbf{t}, A_r, A_\mathbf{a}, A_\mathbf{K})$ |
 |$A_\mathbf{s}$     |Tập hợp tự hủy (self-destruct), là tập hợp các account sẽ bị loại bỏ khi giao dịch hoàn tất. |
 |$A_\mathbf{l}$     |Một loạt các nhật ký (log series) |
@@ -71,8 +71,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$A^0$              |Trạng thái con rỗng: $A^0 \equiv \big(\varnothing, (), \varnothing, 0, \pi, \varnothing\big)$, trong đó $\pi$ là tập hợp của tất cả các địa chỉ hợp đồng được biên dịch trước |
 
 ### Môi trường thực thi (Execution enviroment)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu           | Mô tả                                     |
+| ----------------- | ----------------------------------------- |
 |$I$                |Bộ (tuple) các phần tử sau đây được cung cấp cho môi trường thực thi |
 |$I_a$              |Địa chỉ của tài khoản sở hữu code thực thi (địa chỉ hợp đồng) |
 |$I_o$              |Địa chỉ của người gửi giao dịch (sender) |
@@ -86,14 +86,14 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$I_w$              |Cờ cho quyền sửa đổi trạng thái. Xem EIP-214, STATICCALL |
 
 ### Thực thi (Execution)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu           | Mô tả                                     |
+| ----------------- | ----------------------------------------- |
 |$\Xi$              |Hàm thực thi code $(\boldsymbol{\sigma}', g', A', \mathbf{o}) \equiv \Xi(\boldsymbol{\sigma}, g, A, I)$ |
 |$\mathbf{o}$       |Dữ liệu đầu ra của message-call, $\mathbf{o} \equiv H(\boldsymbol{\mu}, I)$. Khi tạo hợp đồng, mã byte hợp đồng sẽ được triển khai. |
 |$\mathbf{i}$       |Mã EVM khởi tạo cho hợp đồng mới được triển khai (constructor) |
 |$H(\mathbf{\mu}, I)$ |Hàm tạm dừng bình thường, thường là giá trị được cung cấp bởi sự trở lại hoặc hoàn nguyên opcode hoặc trống trong trường hợp dừng. |
 |$Z(\mathbf{\sigma}, \mathbf{\mu}, A, I)$ |Hàm tạm dừng đặc biệt |
-|$w$                |Hoạt động hiện tại sẽ được thực thi: $w \equiv I_\mathbf{b}[\boldsymbol{\mu}_{pc}]$ nếu $\boldsymbol{\mu}_{pc} < \lVert I_\mathbf{b} \rVert$, nếu không thì $\texttt{STOP}$ |
+|$w$                |Hoạt động hiện tại sẽ được thực thi |
 
 ### Khối (Block)
 | Ký hiệu         | Mô tả                                     |
@@ -108,7 +108,7 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$V(H)$             |Hàm xác thực header của khối |
 
 ### Header khối (Block header)
-| Ký hiệu | Mô tả                               |
+| Ký hiệu         | Mô tả                               |
 | --------------- | ---------------------------------------- |
 | $H_p$           | **parentHash**: Hash Keccak 256-bit của header block cha, toàn bộ nội dung. |
 | $H_o$           | **ommersHash**: Hash Keccak 256-bit của danh sách ommers của block này. Hiện tại không còn dùng nữa và giá trị của nó là hằng số $\texttt{KEC}\big(\texttt{RPL}(())\big)$ do sự thay đổi cơ chế đồng thuận sang bằng chứng cổ phần|
@@ -201,8 +201,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $\mathbb{L}$    | Tập hợp tất cả các cây (tree) - nghĩa là cấu trúc chứ không phải là một lá đơn |
 | $\mathbb{Y}$    | Tập hợp các nibbles (4-bit) |
 | $\mathbb{O}$    | Tập hợp các bytes (8-bit) |
-| $M_{3:2048}$    | Bộ lọc Bloom chuyên biệt. |
-| $\Lambda(...)$  | Hàm tạo hợp đồng. |
-| $\Theta(...)$   | Hàm "gọi tin nhắn"/thực thi hợp đồng. |
-| $\Gamma(B)$     | Trạng thái khởi đầu của block $B$. Thường là $\boldsymbol{\sigma}_i: \mathtt{TRIE}(L_S(\boldsymbol{\sigma}_i)) = {P(B_H)_H}_r$. |
-| $\Phi(B)$       | Hàm chuyển tiếp block ánh xạ một block $B$ chưa hoàn chỉnh thành một block hoàn chỉnh $B'$ (thêm vào mixHash, nonce, stateRoot). |
+| $M_{3:2048}$    | Bộ lọc Bloom chuyên biệt |
+| $\Lambda(...)$  | Hàm tạo hợp đồng |
+| $\Theta(...)$   | Hàm "gọi tin nhắn"/thực thi hợp đồng |
+| $\Gamma(B)$     | Trạng thái khởi đầu của block $B$. Thường là $\boldsymbol{\sigma}_i: \mathtt{TRIE}(L_S(\boldsymbol{\sigma}_i)) = {P(B_H)_H}_r$ |
+| $\Phi(B)$       | Hàm chuyển tiếp block ánh xạ một block $B$ chưa hoàn chỉnh thành một block hoàn chỉnh $B'$ (thêm vào mixHash, nonce, stateRoot) |
