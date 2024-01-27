@@ -19,7 +19,7 @@
 ## Ký hiệu cụ thể
 ### Ký hiêụ trên các cấu trúc bậc cao
 | Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| :---------------------: | ----------------------------------------- |
 |$\mathbf{\sigma}$    |Trạng thái thế giới (world-state), bao gồm tất cả trạng thái của tất cả tài khoản gồm luôn thành phần con của nó như: nonce, balances, storage, và code |
 |$\mathbf{\sigma}_t$  |Trạng thái thế giới tại thời điểm $t$ |
 |$\mathbf{\mu}$       |Bộ dữ liệu (tuple) của Trạng thái máy, $(g, pc, m, i, s)$: gas, program counter, memory, memory size, stack |
@@ -31,7 +31,7 @@
 
 ### Trạng thái thế giới (World state)
 | Ký hiệu                    | Mô tả                                     |
-| -------------------------- | ----------------------------------------- |
+| :---------------------: | ----------------------------------------- |
 |$\mathbf{\sigma}[a]$        |Trạng thái của tài khoản $a$, là một bộ (tuple) gồm (none, balance, storageRoot, codeHash): $\mathbf{\sigma}[a] \equiv (\mathbf{\sigma}[a]_n, \mathbf{\sigma}[a]_b, \mathbf{\sigma}[a]_s, \mathbf{\sigma}[a]_c)$ |
 |$\mathbf{\sigma}[a]_n$      |Nonce của tài khoản $a$ |
 |$\mathbf{\sigma}[a]_b$      |Số dư của tài khoản $a$ |
@@ -50,7 +50,7 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 
 ### Trạng thái máy (Machine state)
 | Ký hiệu                    | Mô tả                                     |
-| -------------------------- | ----------------------------------------- |
+| :---------------------: | ----------------------------------------- |
 |$\mathbf{\mu}_g$            |Lượng gas hiện có |
 |$\mathbf{\mu}_{pc}$         |Bộ đếm chương trình (program counter) |
 |$\mathbf{\mu}_\mathbf{m}$   |Nội dung bộ nhớ (memory) |
@@ -59,20 +59,20 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$\mathbf{\mu}_\mathbf{s}[n]$         |Mục thứ $n$ trong ngăn xếp (mục ở độ sâu $n$) |
 
 ### Trạng thái con (Substate)
-| Ký hiệu           | Mô tả                                     |
-| ----------------- | ----------------------------------------- |
-|$A$                |Một trạng thái con trong quá trình thực thi, là một bộ (tuple): $A \equiv (A_\mathbf{s}, A_\mathbf{l}, A_\mathbf{t}, A_r, A_\mathbf{a}, A_\mathbf{K})$ |
-|$A_\mathbf{s}$     |Tập hợp tự hủy (self-destruct), là tập hợp các account sẽ bị loại bỏ khi giao dịch hoàn tất. |
-|$A_\mathbf{l}$     |Một loạt các nhật ký (log series) |
-|$A_\mathbf{t}$     |Tập hợp các account đã chạm vào, trong đó các tài khoản trống sẽ bị xóa vào cuối giao dịch |
-|$A_r$              |Số dư gas để hoàn lại |
-|$A_\mathbf{a}$     |Tập hợp các tài khoản đã truy cập |
-|$A_\mathbf{K}$     |Tập hợp các storage key đã truy cập, mỗi phần tử của $A_\mathbf{K}$ là một bộ (tuple) của 20-byte địa chỉ tài khoản và 32-byte khe lưu trữ (storage slot)
-|$A^0$              |Trạng thái con rỗng: $A^0 \equiv \big(\varnothing, (), \varnothing, 0, \pi, \varnothing\big)$, trong đó $\pi$ là tập hợp của tất cả các địa chỉ hợp đồng được biên dịch trước |
+| Ký hiệu                 | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
+|$A$                      |Một trạng thái con trong quá trình thực thi, là một bộ (tuple): $A \equiv (A_\mathbf{s}, A_\mathbf{l}, A_\mathbf{t}, A_r, A_\mathbf{a}, A_\mathbf{K})$ |
+|$A_\mathbf{s}$           |Tập hợp tự hủy (self-destruct), là tập hợp các account sẽ bị loại bỏ khi giao dịch hoàn tất. |
+|$A_\mathbf{l}$           |Một loạt các nhật ký (log series) |
+|$A_\mathbf{t}$           |Tập hợp các account đã chạm vào, trong đó các tài khoản trống sẽ bị xóa vào cuối giao dịch |
+|$A_r$                    |Số dư gas để hoàn lại |
+|$A_\mathbf{a}$           |Tập hợp các tài khoản đã truy cập |
+|$A_\mathbf{K}$           |Tập hợp các storage key đã truy cập, mỗi phần tử của $A_\mathbf{K}$ là một bộ (tuple) của 20-byte địa chỉ tài khoản và 32-byte khe lưu trữ (storage slot)
+|$A^0$                    |Trạng thái con rỗng: $A^0 \equiv \big(\varnothing, (), \varnothing, 0, \pi, \varnothing\big)$, trong đó $\pi$ là tập hợp của tất cả các địa chỉ hợp đồng được biên dịch trước |
 
 ### Môi trường thực thi (Execution enviroment)
-| Ký hiệu           | Mô tả                                     |
-| ----------------- | ----------------------------------------- |
+| Ký hiệu                 | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
 |$I$                |Bộ (tuple) các phần tử sau đây được cung cấp cho môi trường thực thi |
 |$I_a$              |Địa chỉ của tài khoản sở hữu code thực thi (địa chỉ hợp đồng) |
 |$I_o$              |Địa chỉ của người gửi giao dịch (sender) |
@@ -87,7 +87,7 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 
 ### Thực thi (Execution)
 | Ký hiệu           | Mô tả                                     |
-| ----------------- | ----------------------------------------- |
+| :---------------------: | ----------------------------------------- |
 |$\Xi$              |Hàm thực thi code $(\boldsymbol{\sigma}', g', A', \mathbf{o}) \equiv \Xi(\boldsymbol{\sigma}, g, A, I)$ |
 |$\mathbf{o}$       |Dữ liệu đầu ra của message-call, $\mathbf{o} \equiv H(\boldsymbol{\mu}, I)$. Khi tạo hợp đồng, mã byte hợp đồng sẽ được triển khai. |
 |$\mathbf{i}$       |Mã EVM khởi tạo cho hợp đồng mới được triển khai (constructor) |
@@ -96,8 +96,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$w$                |Hoạt động hiện tại sẽ được thực thi |
 
 ### Khối (Block)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu               | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
 |$B$                |Một khối: $B \equiv (B_H, B_\mathbf{T}, B_\mathbf{U})$ |
 |$B_H$              |Header của khối |
 |$B_\mathbf{T}$     |Một loạt các giao dịch của khối |
@@ -108,8 +108,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$V(H)$             |Hàm xác thực header của khối |
 
 ### Header khối (Block header)
-| Ký hiệu         | Mô tả                               |
-| --------------- | ---------------------------------------- |
+| Ký hiệu               | Mô tả                               |
+| :---------------------: | ---------------------------------------- |
 | $H_p$           | **parentHash**: Hash Keccak 256-bit của header block cha, toàn bộ nội dung. |
 | $H_o$           | **ommersHash**: Hash Keccak 256-bit của danh sách ommers của block này. Hiện tại không còn dùng nữa và giá trị của nó là hằng số $\texttt{KEC}\big(\texttt{RPL}(())\big)$ do sự thay đổi cơ chế đồng thuận sang bằng chứng cổ phần|
 | $H_c$           | **beneficiary**: Địa chỉ 160-bit mà toàn bộ phí ưu tiên thu được từ quá trình đào block này sẽ được chuyển đến (địa chỉ thụ hưởng). |
@@ -127,8 +127,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $H_n$           | **nonce**: Một hash 64-bit kèm theo **mixHash**, rằng một lượng tính toán đủ đã được thực hiện trên block này. Sau khi chuyển cơ chế đồng thuận sang bằng chứng cổ phần, giá trị này không còn được dùng nữa và được đặt là 0x0000000000000000 |
 
 ### Giao dịch (Transaction)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu               | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
 | $T_x$           | **type**: Loại giao dịch, xem [EIP-2718](https://eips.ethereum.org/EIPS/eip-2718), nhận 1 trong các giá trị [0, 1, 2] |
 | $T_n$           | **nonce**: Nonce của giao dịch, mỗi giao dịch của một địa chỉ cụ thể phải có một giá trị nonce tăng dần. Nonce bắt đầu từ 0 cho giao dịch đầu tiên của địa chỉ đó và tăng lên mỗi khi một giao dịch mới được tạo ra từ địa chỉ đó. Cơ chế này giúp đảm bảo rằng mỗi giao dịch được xác nhận chỉ một lần và không thể bị thực hiện lặp lại một lần nữa (replay attacks).|
 | $T_g$           | **gasLimit**: Gas tối đa cho một giao dịch. |
@@ -147,8 +147,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $S(T)$          | Hàm người gửi - khôi phục địa chỉ người gửi từ giao dịch: $S(T) \equiv \mathcal{B}_{96..255}\big(\mathtt{KEC}\big( \mathtt{ECDSARECOVER}(h(T), T_w, T_r, T_s) \big) \big).$ |
 
 ### Biên lai giao dịch (Transation Receipt)
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu               | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
 |$R$              | Biên lai giao dịch (transaction receipt): $R \equiv (R_x, R_z, R_u, R_b, R_l)$ |
 |$R_x$            | Loại giao dịch |
 |$R_z$            | Tình trạng của giao dịch |
@@ -165,8 +165,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 |$L_R$            | Hàm chuẩn bị dữ liệu cho biên nhận giao dịch R: $L_R(R) \equiv (R_z, R_u, R_b, R_l)$, dữ liệu này dành cho việc mã hóa thành mảng byte theo cấu trúc $\texttt{RLP}$ |
 
 ### Những hàm khác
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu               | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
 | $\ell(\mathbf{x})$ | Phần tử cuối cùng trong dãy $\mathbf{x}$: $\ell(\mathbf{x}) \equiv \mathbf{x}[\lVert \mathbf{x} \rVert - 1]$ |
 | $L(n)$          | Hàm "tất cả trừ một phần 64" (all but one 64th): $L(n) \equiv n - \lfloor n / 64 \rfloor$.|
 | $L_I\big( (k, v) \big)$ | Biểu diễn của cặp khóa--giá trị trong cây trie: $L_I\big( (k, v) \big) \equiv \big(\texttt{KEC}(k), \texttt{RLP}(v)\big)$ |
@@ -184,8 +184,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $\mathtt{PoW}(...)$ | Hàm bằng chứng làm việc |
 
 ### Toán hạng và Biểu tượng
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu              | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
 | $\lVert ... \rVert$ | Độ dài hoặc số lượng phần tử của một mảng/ tập hợp/ bộ/ dãy/ chuỗi. |
 | $\wedge$        | Toán tử logic `và`. |
 | $\vee$          | Toán tử logic `hoặc`. |
@@ -193,8 +193,8 @@ Chữ $\boldsymbol{s}$ trong $L_I(\sigma[a]_{\boldsymbol{s}})$ được viết �
 | $\cdot$         | Toán tử nối, $(a, b, c, d) \cdot e \equiv (a, b, c, d, e)$, hoặc nhân vô hướng tùy thuộc vào ngữ cảnh. |
 
 ### Các ký hiệu khác
-| Ký hiệu         | Mô tả                                     |
-| --------------- | ----------------------------------------- |
+| Ký hiệu               | Mô tả                                     |
+| :---------------------: | ----------------------------------------- |
 | $\mathbb{B}$    | Tập hợp tất cả các dãy byte. |
 | $\mathbb{B}_n$  | Tập hợp tất cả các dãy byte có độ dài $n$ byte: $\mathbb{B}_n = \{ B: B \in \mathbb{B} \wedge \lVert B \rVert = n \}$ |
 | $\mathbb{T}$    | Tập hợp các mảng byte và dãy cấu trúc |
